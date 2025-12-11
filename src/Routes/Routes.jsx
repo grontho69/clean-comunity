@@ -1,65 +1,64 @@
+import { createBrowserRouter } from "react-router";
+import MainLayout from "../layout/MainLayout";
+import Home from "../pages/Home";
+import AddIssue from "../pages/AddIssue";
+import AllIssues from "../pages/AllIssues";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
+import IssueDetails from "../pages/IssueDetails";
+import MyContribution from "../pages/MyContribution";
+import MyIssues from "../pages/MyIssues";
+import NotFound from "../pages/NotFound";
+import IssueCard from "../components/IssueCard";
 
-import { createBrowserRouter } from 'react-router';
-import MainLayout from '../Layout/MainLayout';
-import Home from '../pages/Home';
-import AddIssue from '../pages/AddIssue';
-import AllIssues from '../pages/AllIssues';
-import IssueDetails from '../pages/IssueDetails';
-import MyContribution from '../pages/MyContribution';
-import MyIssues from '../pages/MyIssues';
-import Register from '../pages/Register';
-import Login from '../pages/Login';
-import NotFound from '../pages/NotFound';
-import IssueCard from '../components/IssueCard';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
-    children: [{
-      index: true,
-      element:<Home/>,
-    },
+    children: [
       {
-        path: '/add-issue',
-        element:<AddIssue/>,
+        index: true,
+        element: <Home />,
       },
       {
-      path:'/all-issue',
-      element:<AllIssues/>,
-      
+        path: "/all-issues",
+        element: <AllIssues />,
       },
       {
-        path: "/issue-details",
-        element:<IssueDetails/>,
+        path: "/issue-card",
+        element: <IssueCard/>
       },
       {
-        path: '/my-contributions',
-        element:<MyContribution/>,
-      },
-      {
-        path: '/my-issues',
-        element: <MyIssues />,
+        path: "/add-issue",
+        element: <AddIssue/>
+          
         
       },
       {
-        path: '/register',
-        element:<Register/>,
+        path: "/issue-details",
+        elememnt:<IssueDetails/>,
       },
       {
-        path: '/login',
-        element:<Login/>,
+        path: "/my-contributions",
+        elememnt:<MyContribution/>,
+      },
+{
+        path: "/my-issue",
+        elememnt:<MyIssues/>,
       },
       {
-        path: '/error',
-        element:<NotFound/>,
+        path: "/error",
+        elememnt:<NotFound/>,
       },
       {
-        path: '/issue-card',
-        element:<IssueCard/>,
+        path: "/register",
+        element: <Register />,
       },
-    
-    ]
-    
-  }
-])
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+]);
