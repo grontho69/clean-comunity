@@ -1,12 +1,10 @@
 import { NavLink, Link } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
-
 import { toast } from "react-toastify";
-import MyContainer from "./MyContainer";
 
 const Navbar = () => {
-  const { user, signoutUserFunc, setUser,  } = useContext(AuthContext);
+  const { user, signoutUserFunc, setUser } = useContext(AuthContext);
 
   const handleSignout = () => {
     signoutUserFunc()
@@ -23,73 +21,74 @@ const Navbar = () => {
       : "text-gray-700 hover:text-purple-600";
 
   return (
-    
-       <div className="bg-white border-b border-gray-200 py-3">
+    <div className="bg-white border-b border-gray-200 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
-        
-        {/* Logo */}
-        <Link to={"/"} className="flex items-center gap-2">
-          <img src={0} className="w-[50px]" />
+
+        {/* LOGO */}
+        <Link to="/" className="flex items-center gap-2">
           <span className="text-xl font-bold">Clean Community</span>
         </Link>
 
-        {/* Menu */}
+        {/* MENU */}
         <ul className="hidden md:flex items-center gap-6">
 
-          {/* PUBLIC ROUTES */}
+          {/* PUBLIC */}
           <li>
-            <NavLink to={"/"} className={navLinkStyle}>Home</NavLink>
+            <NavLink to="/" className={navLinkStyle}>Home</NavLink>
           </li>
 
           <li>
-            <NavLink to={"/issues"} className={navLinkStyle}>Issues</NavLink>
+            <NavLink to="/all-issues" className={navLinkStyle}>
+              Issues
+            </NavLink>
           </li>
 
-          {/* PRIVATE ROUTES */}
+          {/* PRIVATE */}
           {user && (
             <>
               <li>
-                <NavLink to={"/all-issues"} className={navLinkStyle}>All Issues</NavLink>
+                <NavLink to="/add-issue" className={navLinkStyle}>
+                  Add Issue
+                </NavLink>
               </li>
 
               <li>
-                <NavLink to={"/add-issue"} className={navLinkStyle}>Add Issue</NavLink>
+                <NavLink to="/my-issues" className={navLinkStyle}>
+                  My Issues
+                </NavLink>
               </li>
 
               <li>
-                <NavLink to={"/my-issues"} className={navLinkStyle}>My Issues</NavLink>
-              </li>
-
-              <li>
-                <NavLink to={"/my-contribution"} className={navLinkStyle}>My Contribution</NavLink>
+                <NavLink to="/my-contributions" className={navLinkStyle}>
+                  My Contribution
+                </NavLink>
               </li>
             </>
           )}
 
-          {/* LOGIN / REGISTER */}
+          {/* AUTH */}
           {!user && (
             <>
               <li>
-                <NavLink to={"/login"} className={navLinkStyle}>Login</NavLink>
+                <NavLink to="/login" className={navLinkStyle}>Login</NavLink>
               </li>
-
               <li>
-                <NavLink to={"/register"} className={navLinkStyle}>Register</NavLink>
+                <NavLink to="/register" className={navLinkStyle}>Register</NavLink>
               </li>
             </>
           )}
         </ul>
 
-        {/* RIGHT SIDE (NO LOADER NOW) */}
+        {/* RIGHT SIDE */}
         {user ? (
-          // Avatar Dropdown
           <div className="relative group cursor-pointer">
             <img
-              src={user?.photoURL || "https://via.placeholder.com/80"}
+              src={user.photoURL || "https://via.placeholder.com/80"}
               className="w-[42px] h-[42px] rounded-full"
+              alt="user"
             />
 
-            {/* Dropdown */}
+            {/* DROPDOWN */}
             <div className="absolute right-0 top-12 hidden group-hover:block bg-white shadow-md rounded-md w-48 p-4">
               <p className="font-semibold">{user.displayName}</p>
               <p className="text-gray-600 text-sm mb-2">{user.email}</p>
@@ -104,7 +103,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link
-            to={"/login"}
+            to="/login"
             className="bg-purple-600 text-white px-4 py-2 rounded-md font-semibold"
           >
             Sign In
@@ -112,7 +111,6 @@ const Navbar = () => {
         )}
       </div>
     </div>
-   
   );
 };
 

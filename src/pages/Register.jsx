@@ -51,6 +51,9 @@ const Register = () => {
         setUser(res.user);
         toast.success("Logged in with Google!");
         navigate("/");
+
+
+
       })
       .catch((err) => toast.error(err.message));
   };

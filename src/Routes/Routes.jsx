@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
+
 import Home from "../pages/Home";
 import AddIssue from "../pages/AddIssue";
 import AllIssues from "../pages/AllIssues";
@@ -9,54 +10,71 @@ import IssueDetails from "../pages/IssueDetails";
 import MyContribution from "../pages/MyContribution";
 import MyIssues from "../pages/MyIssues";
 import NotFound from "../pages/NotFound";
+
 import IssueCard from "../components/IssueCard";
+import PrivateRoute from "../components/Privateroute";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
         element: <Home />,
       },
+
       {
-        path: "/all-issues",
+        path: "all-issues",
         element: <AllIssues />,
       },
+
       {
-        path: "/issue-card",
-        element: <IssueCard/>
+        path: "issue-card",
+        element: <IssueCard />,
       },
+
       {
-        path: "/add-issue",
-        element: <AddIssue/>
-          
-        
+        path: "issue-details/:id",
+        element: <IssueDetails />,
       },
+
       {
-        path: "/issue-details",
-        elememnt:<IssueDetails/>,
+        path: "add-issue",
+        element: (
+          <PrivateRoute>
+             <AddIssue />
+          </PrivateRoute>
+        ),
       },
+
       {
-        path: "/my-contributions",
-        elememnt:<MyContribution/>,
+        path: "my-contributions",
+        element: (
+          <PrivateRoute>
+            <MyContribution />
+          </PrivateRoute>
+        ),
       },
-{
-        path: "/my-issue",
-        elememnt:<MyIssues/>,
-      },
+
       {
-        path: "/error",
-        elememnt:<NotFound/>,
+        path: "my-issues",
+        element: (
+          <PrivateRoute>
+            <MyIssues />
+          </PrivateRoute>
+        ),
       },
+
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
+
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
     ],
