@@ -39,7 +39,7 @@ const Navbar = () => {
 
           <li>
             <NavLink to="/all-issues" className={navLinkStyle}>
-              Issues
+             All Issues
             </NavLink>
           </li>
 

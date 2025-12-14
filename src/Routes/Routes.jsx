@@ -24,12 +24,16 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader:()=> fetch('http://localhost:3000/recent-complaints')
       },
 
       {
         path: "all-issues",
         element: <AllIssues />,
+        loader:()=> fetch('http://localhost:3000/issues')
+       
       },
+
 
       {
         path: "issue-card",
@@ -38,7 +42,11 @@ export const router = createBrowserRouter([
 
       {
         path: "issue-details/:id",
-        element: <IssueDetails />,
+        element: (
+          <PrivateRoute>
+             <IssueDetails />
+          </PrivateRoute>
+        ),
       },
 
       {

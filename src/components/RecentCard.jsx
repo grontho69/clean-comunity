@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const IssueCard = ({issue}) => {
-  const { image, title, description, category, status, _id } = issue
+const RecentCard = ({recent}) => {
+  const { image, title, description, category, status, _id } = recent
   return (
   <div className="card bg-base-100 w-96 shadow-sm">
   <figure>
@@ -38,4 +38,4 @@ const IssueCard = ({issue}) => {
   )
 }
 
-export default IssueCard
+export default RecentCard

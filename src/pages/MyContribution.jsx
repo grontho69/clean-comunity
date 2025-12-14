@@ -1,29 +1,33 @@
-import React from 'react'
-
 const MyContribution = () => {
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6">My Contribution</h2>
+    <div className="max-w-6xl mx-auto mt-10 px-4">
+      <h2 className="text-3xl font-bold mb-6">My Contributions</h2>
 
-      <table className="table">
+      <table className="table w-full">
         <thead>
           <tr>
             <th>Issue</th>
             <th>Amount</th>
             <th>Date</th>
-            <th>Report</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr>
-            <td colSpan="4" className="text-center text-gray-500">
-              No contribution found
-            </td>
-          </tr>
+          {[1, 2].map((i) => (
+            <tr key={i}>
+              <td>Issue Title</td>
+              <td>৳200</td>
+              <td>2025-01-01</td>
+            </tr>
+          ))}
         </tbody>
       </table>
-    </div>
-  )
-}
 
-export default MyContribution
+      <button className="btn btn-outline mt-6">
+        Download PDF
+      </button>
+    </div>
+  );
+};
+
+export default MyContribution;

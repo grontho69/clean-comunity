@@ -53,7 +53,6 @@ const Register = () => {
         navigate("/");
 
 
-
       })
       .catch((err) => toast.error(err.message));
   };

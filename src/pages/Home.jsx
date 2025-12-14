@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
-
+import RecentComplaints from '../components/RecentComplaints';
+const RecentComplaintsPromise = fetch('http://localhost:3000/recent-complaints').then(res => res.json());
 const Home = () => {
+   
   return (
    <div className="space-y-20 mt-10">
 
@@ -28,7 +30,20 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ================= FEATURES ================= */}
+
+     {/* ================= FEATURES ================= */}  
+
+
+
+   <div className="max-w-7xl mx-auto px-4 mt-10 mb-10">
+      <h2 className="text-3xl font-bold mb-6 text-center">Recent Complaints</h2>
+        <RecentComplaints RecentComplaintsPromise={RecentComplaintsPromise}></RecentComplaints>
+     
+    </div>
+
+
+
+     
       <section className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">
           What You Can Do

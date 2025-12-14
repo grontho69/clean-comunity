@@ -1,20 +1,16 @@
 import React from 'react'
+import { useLoaderData } from 'react-router';
+import IssueCard from '../components/IssueCard';
 
 const AllIssues = () => {
+  const data = useLoaderData()
+  console.log(data)
   return (
-    <div className="min-h-screen p-6">
-      <h2 className="text-3xl font-bold mb-6">All Reported Issues</h2>
+   <div className="max-w-7xl mx-auto px-4 mt-10 mb-10">
+      <h2 className="text-3xl font-bold mb-6 text-center">All Issues</h2>
 
       <div className="grid md:grid-cols-3 gap-6">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="card bg-base-100 shadow">
-            <div className="card-body">
-              <h3 className="card-title">Issue Title</h3>
-              <p>Short issue description goes here.</p>
-              <span className="badge badge-info">Garbage</span>
-            </div>
-          </div>
-        ))}
+       {data.map(issue => <IssueCard key={issue._id} issue={issue}/>)}
       </div>
     </div>
   )

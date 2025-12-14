@@ -11,7 +11,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from || "/";
 
-  // Already logged in user redirect
+
   if (user) {
     navigate("/");
     return null;
